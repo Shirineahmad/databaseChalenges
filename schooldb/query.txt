@@ -1,0 +1,42 @@
+#chalenge1
+#mysql -u root -p command
+#CREATE DATABASE schoolDB; 
+#USE schoolDB;
+#SHOW DATABASES;
+#chalenge2
+#CREATE TABLE teachers(id INT AUTO_INCREMENT PRIMARY KEY,first_name VARCHAR(255) NOT NULL,last_name VARCHAR(255) NOT NULL,subject VARCHAR(255));
+#SHOW TABLES;  
+DESCRIBE teachers;
+#chalenge3
+#SELECT * FROM teachers;
+#SELECT first_name, subject FROM teachers;
+#chalege4
+# CREATE TABLE students(
+    ->     id INT PRIMARY KEY,
+    ->     first_name VARCHAR(50),
+    ->     last_name VARCHAR(50),
+    ->     teacher_id INT
+    -> );nge4
+#INSERT INTO students(id, first_name, last_name, teacher_id)
+VALUES (1, 'Alice', 'Brown', 1),
+       (2, 'Bob', 'Johnson', 2);
+#a#SELECT students.first_name , teachers.first_name
+FROM students
+INNER JOIN teachers ON students.teacher_id = teachers.id;
+#b#SELECT students.first_name , teachers.first_name
+FROM students
+LEFT JOIN teachers ON students.teacher_id = teachers.id;
+#C#SELECT students.first_name , teachers.first_name
+FROM students
+RIGHT JOIN teachers ON students.teacher_id = teachers.id;
+#d#SELECT students.first_name AS student_name, teachers.first_name AS teacher_name
+FROM students
+LEFT JOIN teachers ON students.teacher_id = teachers.id
+
+UNION  
+
+SELECT students.first_name AS student_name, teachers.first_name AS teacher_name
+FROM students
+RIGHT JOIN teachers ON students.teacher_id = teachers.id
+WHERE students.id IS NULL;
+
